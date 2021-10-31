@@ -77,10 +77,13 @@ class _ElectionPageState extends State<ElectionPage> {
                                 fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
-                          Text(
-                            'เลือกตั้ง อบต.',
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Text(
+                              'เลือกตั้ง อบต.',
+                              style: TextStyle(color: Colors.white, fontSize: 26.0),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                           Text(
                             'รายชื่อผู้สมัครรับเลือกตั้ง\nนายกองค์กรบริหารส่วนตำบลเขาพระ\nอำเภอเมืองนครนายก จังหวัดนครนายก',

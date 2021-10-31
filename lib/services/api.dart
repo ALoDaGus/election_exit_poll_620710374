@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:election_exit_poll_620710374/models/api_Result.dart';
+import 'package:election_exit_poll_620710374/models/Elector.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
@@ -13,7 +13,7 @@ class Api {
     var url = Uri.parse('$BASE_URL/$endPoint');
     final response = await http.post(
       url,
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json', 'id': '620710374'},
       body: json.encode(params),
     );
 
@@ -23,7 +23,7 @@ class Api {
       print('RESPONSE BODY: $jsonBody');
 
       // แปลง Dart's data structure ไปเป็น model (POJO)
-      var apiResult = ApiResult.fromJson(jsonBody);
+      var apiResult = Elector.fromJson(jsonBody);
 
       if (apiResult.status == 'ok') {
         return apiResult.data;
@@ -42,7 +42,10 @@ class Api {
     String queryString = Uri(queryParameters: queryParams).query;
     var url = Uri.parse('$BASE_URL/$endPoint?$queryString');
 
-    final response = await http.get(url);
+    final response = await http.get(
+      url,
+      headers: {'Content-Type': 'application/json', 'id': '620710374'},
+    );
 
     if (response.statusCode == 200) {
       // แปลง text ที่มีรูปแบบเป็น JSON ไปเป็น Dart's data structure (List/Map)
@@ -51,7 +54,7 @@ class Api {
       print('RESPONSE BODY: $jsonBody');
 
       // แปลง Dart's data structure ไปเป็น model (POJO)
-      var apiResult = ApiResult.fromJson(jsonBody);
+      var apiResult = Elector.fromJson(jsonBody);
 
       if (apiResult.status == 'ok') {
         return apiResult.data;

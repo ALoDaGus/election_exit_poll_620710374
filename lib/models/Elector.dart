@@ -1,16 +1,16 @@
-class ApiResult {
+class Elector {
   final String status;
   final String? message;
   final dynamic data;
 
-  ApiResult({
+  Elector({
     required this.status,
     required this.message,
     required this.data,
   });
 
-  factory ApiResult.fromJson(Map<String, dynamic> json) {
-    return ApiResult(
+  factory Elector.fromJson(Map<String, dynamic> json) {
+    return Elector(
       status: json['status'],
       message: json['message'],
       data: json['data'],
